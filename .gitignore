@@ -1,0 +1,7 @@
+/instance
+/__pychache__
+/.idea
+/.env
+config.py
+filters.py
+main.py

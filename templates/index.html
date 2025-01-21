@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge-Based Search Enhancement</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="search-container">
+        <div class="search-name"> SEARCH ENHANCEMENT </div>
+        <form method="POST" action="/search">
+            <input type="text" name="query" value="{{ query }}" placeholder="Search..." required>
+            <button type="submit">Search</button>
+        </form>
+
+        {% if corrected_query %}
+            <p>Did you mean:
+                <a href="#" onclick="submitCorrectedQuery('{{ corrected_query }}')">{{ corrected_query }}</a>?
+            </p>
+        {% endif %}
+    </div>
+
+    <div class="results-container">
+        {% for result in results %}
+            <div class="result">
+                <h3><a href="{{ result['link'] }}" target="_blank">{{ result['title'] }}</a></h3>
+                <p>{{ result['snippet'] }}</p>
+
+                <!-- Form to increase relevance when clicked -->
+                <form action="/increase_relevance" method="POST" style="display:inline;">
+                    <input type="hidden" name="link" value="{{ result['link'] }}">
+                    <button type="submit" class="read-more-btn">Read more</button>
+                </form>
+            </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        // Function to submit the corrected query when "Did you mean" is clicked
+        function submitCorrectedQuery(query) {
+            var form = document.createElement("form");
+            form.method = "POST";
+            form.action = "/search";
+
+            var input = document.createElement("input");
+            input.type = "hidden";
+            input.name = "query";
+            input.value = query;
+
+            form.appendChild(input);
+            document.body.appendChild(form);
+            form.submit();
+        }
+    </script>
+</body>
+</html>
