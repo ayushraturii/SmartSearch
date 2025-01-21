@@ -5,8 +5,8 @@ import torch
 from fuzzywuzzy import process
 
 # API Key and CX for Google Custom Search
-API_KEY="AIzaSyCgS5tF5ai_bhZMOVWSneNSsJ-j3YcyKQM"
-CX="e47eec9e1bc6c47b5"
+API_KEY="API KEY"
+CX="Enginekey"
 
 
 # Fetch search results from Google Custom Search API
