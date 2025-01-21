@@ -65,6 +65,3 @@ We welcome contributions to the project. To contribute:
 4. Push to your forked repository
 5. Open a pull request
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
